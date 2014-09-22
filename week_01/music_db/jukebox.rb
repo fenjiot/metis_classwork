@@ -7,16 +7,6 @@ class Jukebox
     @artists = []
   end
 
-#  def play
-#    puts @music["Artist"]
-#    puts
-#    puts
-#    @music["Name"].times do
-#      puts @music["Name"]
-#    end
-#  end
-
-
   def query_artist
     available_artists = get_artists 
 

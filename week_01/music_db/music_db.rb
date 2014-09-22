@@ -39,6 +39,3 @@ class MusicDB
 
 
 end
-
-#music_db = MusicDB.new
-#music_db.get_db("music.csv")
