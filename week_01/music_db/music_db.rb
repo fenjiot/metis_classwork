@@ -11,7 +11,7 @@ class MusicDB
     CSV.foreach(file_name, {headers: true}) do |row|
       @database << row
     end
-    puts @database.inspect
+    @database
   end
 
 
