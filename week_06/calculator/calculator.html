@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body {
+        background: #9DDB72;
+      }
+    </style>
+    <script>
+      function calculate(){
+        var leftValue = Number(document.getElementById("left").value);
+        var rightValue = Number(document.getElementById("right").value);
+        var operator = document.getElementById("operator").value;
+        var resultElement = document.getElementById("result");
+
+        if( operator === "+") {
+          var result = leftValue + rightValue;
+        } else if( operator === "-") {
+          var result = leftValue - rightValue;
+        } else if( operator === "*") {
+          var result = leftValue * rightValue;
+        } else if( operator === "/") {
+          var result = leftValue / rightValue;
+        } else if( operator === "**") {
+          var result = Math.pow(leftValue, rightValue);
+        } else {
+          var result = "Hey, you can't do that!";
+        }
+
+        resultElement.innerText = result;
+        // console.log(result);
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Calculator</h1>
+
+    <h4 id="result">No calculation yet</h4>
+
+    <form onsubmit="return calculate();">
+      <input type="number" id="left" />
+      <input type="text" id="operator" />
+      <input type="number" id="right" />
+      <input type="submit" />
+    </form>
+
+  </body>
+</html>
