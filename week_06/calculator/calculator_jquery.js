@@ -1,4 +1,9 @@
+$(function(){
+  $("#theForm").submit( calculate );
+})
+
 function calculate(){
+
   var leftValue = Number($("#left").val());
   var rightValue = Number($("#right").val());
   var operator = $("#operator").val();
