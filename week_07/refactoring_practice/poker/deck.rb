@@ -1,23 +1,35 @@
+require "./hand"
+
 class Deck
   def initialize
     @ranks = %w[ A 2 3 4 5 6 7 8 9 10 J Q K ]
     @suits = %w[ C D H S ]
-    @deck = []
+    @cards = []
   end
+
+  attr_reader :cards
 
   def create
     @suits.each do |suit|
       @ranks.each do |rank|
-        @deck << rank + suit
+        @cards << { rank: rank, suit: suit }
       end
     end
   end
 
   def shuffle
-    @deck.shuffle!
+    @cards.shuffle!
+  end
+
+  def print
+    # @cards.each { |deck| puts deck[:rank] + deck[:suit] }
+    puts @cards[0][:rank]
   end
 end
 
 deck = Deck.new
 deck.create
-puts deck.shuffle
+deck.shuffle
+
+hand = Hand.new(deck)
+hand.deal
