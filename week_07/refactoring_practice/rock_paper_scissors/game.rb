@@ -12,9 +12,8 @@ class Game
   end
 
   def play
-    print "Your move? (R/P/S, q to quit) > "
-    @player_move = gets.chomp.upcase
-    puts "AI played " + ai_select_answer
+    player_select_answer
+    ai_select_answer
     winner = Judge.new(@player_move, @ai_move).compare
     result(winner)
     play_again
@@ -22,8 +21,14 @@ class Game
 
   private
 
+  def player_select_answer
+    print "Your move? (R/P/S, q to quit) > "
+    @player_move = gets.chomp.upcase
+  end
+
   def ai_select_answer
     @ai_move = random_mode
+    puts "AI played " + @ai_move
   end
 
   def random_mode
