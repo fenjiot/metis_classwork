@@ -2,7 +2,6 @@ require "csv"
 
 class Hotel
   def initialize
-    puts "HELLO"
     @database = []
   end
 
