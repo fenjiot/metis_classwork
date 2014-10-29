@@ -1,5 +1,5 @@
 class Judge
-    DEFEATED_BY = {
+    WINNING_MOVE_AGAINST = {
       "R" => "P",
       "P" => "S",
       "S" => "R",
@@ -31,6 +31,6 @@ class Judge
   end
 
   def ai_won?
-    DEFEATED_BY[@player_move] == @ai_move
+    @ai_move == WINNING_MOVE_AGAINST[@player_move]
   end
 end

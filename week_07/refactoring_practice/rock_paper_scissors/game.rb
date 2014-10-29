@@ -2,20 +2,16 @@ require "./judge"
 
 class Game
   RPS = %w[ R P S ]
-  WINNER_LOSER = {
+  LOST_TO = {
     "PLAYER" => "AI",
     "AI" => "PLAYER",
   }
 
-  def initialize
-    puts "Hello"
-  end
-
   def play
     player_select_answer
     ai_select_answer
-    winner = Judge.new(@player_move, @ai_move).compare
-    result(winner)
+    Judge.new(@player_move, @ai_move).compare
+    # result(winner)
     play_again
   end
 
@@ -39,7 +35,7 @@ class Game
     if (winner == "TIE")
       puts "TIE"
     else
-      puts "#{winner} beats #{WINNER_LOSER[winner]}"
+      puts "#{winner} beats #{LOST_TO[winner]}"
     end
   end
 
@@ -47,10 +43,10 @@ class Game
     print "Play again? (Yes/No) > "
     answer = gets.chomp.upcase
     if answer == "YES"
-      self.play
+      play
     end
   end
 end
 
-rps = Game.new
-rps.play
+game = Game.new
+game.play
