@@ -25,6 +25,14 @@ class Deck
     # @cards.each { |deck| puts deck[:rank] + deck[:suit] }
     puts @cards[0][:rank]
   end
+
+  def hand
+    hand = Hand.new(@deck)
+    player = hand.deal
+    puts player
+    puts
+    hand
+  end
 end
 
 deck = Deck.new
@@ -32,4 +40,8 @@ deck.create
 deck.shuffle
 
 hand = Hand.new(deck)
-hand.deal
+4.times do
+  player = hand.deal
+  puts player
+  puts
+end
