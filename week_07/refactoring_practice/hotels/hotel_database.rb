@@ -1,5 +1,6 @@
 require "csv"
 require "./hotel"
+require "./null_hotel"
 require "./listing"
 
 class HotelDatabase
@@ -22,7 +23,7 @@ class HotelDatabase
   end
 
   def find_hotel(name)
-    @hotels.fetch(name)
+    @hotels.fetch(name, NullHotel.new)
   end
 
   def read_in_file(file_name)

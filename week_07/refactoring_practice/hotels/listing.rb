@@ -4,8 +4,8 @@ class Listing
   end
 
   def describe
-    puts @hotel.phone
-    puts @hotel.location
-    puts @hotel.total_rooms
+    puts "Phone: #{@hotel.phone}"
+    puts "Location: #{@hotel.location}"
+    puts "Number of rooms: #{@hotel.total_rooms}"
   end
 end
