@@ -6,13 +6,21 @@ class HotelDatabase
     read_in_file(file_name)
   end
 
+  def prompt_user
+    print "Which property? > "
+    gets.chromp
+  end
+
   private
 
   def read_in_file(file)
     CSV.foreach(file, headers: true) do |row|
-      puts row["Hotel"]
+      name = row["Hotel"]
+      @database[name] = row
     end
+    puts @database
   end
 end
 
-HotelDatabase.new("hotels.csv")
+database = HotelDatabase.new("hotels.csv")
+database.prompt_user
