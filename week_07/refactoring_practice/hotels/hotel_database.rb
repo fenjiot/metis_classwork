@@ -1,24 +1,35 @@
 require "csv"
+require "./hotel"
+require "./listing"
 
 class HotelDatabase
   def initialize(file_name)
-    @database = {}
+    @hotels = {}
     read_in_file(file_name)
   end
 
   def prompt_user
-    print "Which property? > "
-    gets.chromp
+    name = ask_user_which_property
+    hotel = find_hotel(name)
+    Listing.new(hotel).describe
   end
 
   private
 
-  def read_in_file(file)
-    CSV.foreach(file, headers: true) do |row|
-      name = row["Hotel"]
-      @database[name] = row
+  def ask_user_which_property
+    print "Which property? > "
+    gets.chomp
+  end
+
+  def find_hotel(name)
+    @hotels.fetch(name)
+  end
+
+  def read_in_file(file_name)
+    CSV.foreach(file_name, headers: true) do |row|
+      hotel = Hotel.new(row)
+      @hotels[hotel.name] = hotel
     end
-    puts @database
   end
 end
 
