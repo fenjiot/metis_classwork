@@ -1,1 +1,3 @@
-Play Poker 5-card stud
+# Poker 5-card stud
+
+By Frank
