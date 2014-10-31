@@ -1,32 +1,30 @@
-require "./judge"
+require "./round"
 
 class Game
-  RPS = %w[ R P S ]
+  def initialize
+    @rounds_played = 0
+    @rounds_won = 0
+  end
 
   def play
-    player_select_answer
-    ai_select_answer
-    Judge.new(@player_move, @ai_move).compare
-    play_again
+    Round.new.play
+    increment_rounds_played
+    announce_score
+    play_again?
   end
 
   private
 
-  def player_select_answer
-    print "Your move? (R/P/S) > "
-    @player_move = gets.chomp.upcase
+  def announce_score
+    percentage = (@rounds_won / @rounds_played.to_f) * 100
+    puts "You won #{percentage.round}% of hands so far."
   end
 
-  def ai_select_answer
-    @ai_move = random_mode
-    puts "AI played " + @ai_move
+  def increment_rounds_played
+    @rounds_played += 1
   end
 
-  def random_mode
-    RPS.sample
-  end
-
-  def play_again
+  def play_again?
     print "Play again? (y/n) > "
     answer = gets.chomp.downcase
     if answer == "y"
