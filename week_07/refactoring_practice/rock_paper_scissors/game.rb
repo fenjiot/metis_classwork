@@ -7,13 +7,20 @@ class Game
   end
 
   def play
-    Round.new.play
+    round = Round.new.play
+    adjust_score_based_on(round)
     increment_rounds_played
     announce_score
     play_again?
   end
 
   private
+
+  def adjust_score_based_on(round)
+    if round
+      @rounds_won += 1
+    end
+  end
 
   def announce_score
     percentage = (@rounds_won / @rounds_played.to_f) * 100

@@ -6,7 +6,7 @@ class Round
   def play
     player_select_answer
     ai_select_answer
-    Judge.new(@player_move, @ai_move).compare
+    ask_judge_to_judge
   end
 
   private
@@ -19,6 +19,12 @@ class Round
   def ai_select_answer
     @ai_move = random_mode
     puts "AI played " + @ai_move
+  end
+
+  def ask_judge_to_judge
+    judge = Judge.new(@player_move, @ai_move)
+    judge.compare
+    judge.won?
   end
 
   def random_mode

@@ -14,6 +14,10 @@ class Judge
     tie? || ai_won? || player_won
   end
 
+  def won?
+    @player_move == WINNING_MOVE_AGAINST[@ai_move]
+  end
+
   private
 
   def tie?
