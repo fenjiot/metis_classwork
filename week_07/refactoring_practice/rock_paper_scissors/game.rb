@@ -28,7 +28,7 @@ class Game
 
   def select_mode
     puts "#{MODE.values}"
-    puts "Please select mode: (#{MODE.keys.join("/")})"
+    print "Please select mode: (#{MODE.keys.join("/")}) > "
     gets.chomp.upcase
   end
 

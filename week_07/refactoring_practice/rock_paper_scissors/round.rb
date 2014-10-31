@@ -4,6 +4,7 @@ class Round
   CHOICES = Judge::WINNING_MOVE_AGAINST.keys
 
   def play(mode)
+    decorate
     player_select_answer
     ai_select_answer(mode)
     ask_judge_to_judge
@@ -11,8 +12,11 @@ class Round
 
   private
 
-  def player_select_answer
+  def decorate
     puts "\n" + "-" * 50
+  end
+
+  def player_select_answer
     print "Your move? (#{CHOICES.join("/")}) > "
     @player_move = gets.chomp.upcase
   end
